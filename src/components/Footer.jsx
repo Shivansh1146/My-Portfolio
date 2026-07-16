@@ -20,14 +20,6 @@ const Footer = () => {
           <Mail size={24} />
         </a>
       </div>
-
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2rem' }}>
-        <img 
-          src="https://github-readme-stats.vercel.app/api?username=Shivansh1146&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=7aa2f7&text_color=c0caf5&icon_color=bb9af7" 
-          alt="Shivansh's GitHub Stats" 
-          style={{ borderRadius: '10px', boxShadow: '0 4px 30px rgba(0,0,0,0.3)', width: '100%', maxWidth: '400px' }}
-        />
-      </div>
       
       <p className="footer-copyright">
         © {new Date().getFullYear()} Shivansh Jaiswal. Engineered with React & Vite.
