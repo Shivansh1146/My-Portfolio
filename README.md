@@ -1,6 +1,6 @@
 <div align="center">
-  <h1 align="center">My Portfolio 🚀</h1>
-  <h3>A premium, lightning-fast personal portfolio engineered with React & Vite.</h3>
+  <h1 align="center">Shivansh Jaiswal | Personal Portfolio 🚀</h1>
+  <h3>A premium, lightning-fast personal developer portfolio engineered with React & Vite.</h3>
   
   <p align="center">
     <a href="https://reactjs.org/">
@@ -13,30 +13,39 @@
       <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS" />
     </a>
   </p>
+
+  <p align="center">
+    <strong><a href="https://my-portfolio-five-eta-69.vercel.app">🔴 View Live Deployment</a></strong>
+  </p>
 </div>
 
 ---
 
 ## 🌟 Overview
 
-This repository contains the source code for my personal portfolio. It is designed to be fully responsive, highly interactive, and visually striking, using a custom-built **Tokyonight Glassmorphism** design system.
+This repository contains the source code for my fully component-driven personal portfolio. It is designed to be fully responsive, highly interactive, and visually striking, using a custom-built **Tokyonight Glassmorphism** design system.
 
 The portfolio is used to showcase my expertise in **Backend Engineering** and **Artificial Intelligence**, highlighting my academic background, technical skills, and featured projects like *MedicSense AI* and *Study Buddy*.
 
 ## ✨ Features
 
 - **Custom Glassmorphism UI:** Frosted glass panels with glowing neon borders that respond to hover interactions.
-- **Dynamic Projects Showcase:** Detailed cards for top projects with specific technology tags.
+- **Scroll-Triggered Animations:** Custom `useIntersectionObserver` hook for elegant `.fade-up` reveals as the user scrolls.
+- **Dynamic Projects Showcase:** Detailed cards for top projects with specific technology tags and a fully state-driven filtering system.
+- **Vercel Analytics Integrated:** Privacy-friendly, real-time traffic tracking.
 - **Integrated PDF Resume:** Direct access to view and download my official resume.
-- **100% Responsive:** Flawless rendering across mobile, tablet, and desktop environments.
-- **Zero Third-Party CSS Libraries:** The entire UI is built with highly optimized Vanilla CSS for maximum performance and customizability.
+- **100% Responsive:** Flawless rendering across mobile, tablet, and desktop environments with a collapsing hamburger menu.
+- **SEO Optimized:** Full Open Graph (`og:image`, `og:title`) and Twitter Card metadata for rich link previews.
+- **Zero Third-Party CSS Libraries:** The entire UI is built with highly optimized Vanilla CSS for maximum performance.
 
-## 🛠️ Architecture
+## 🛠️ Architecture & Tech Stack
 
-- **Framework:** React.js
-- **Build Tool:** Vite
-- **Styling:** Custom CSS3 with CSS Variables
-- **Typography:** Outfit (Google Fonts)
+This project uses a clean, highly modular React architecture:
+- **Framework:** React.js 19
+- **Build Tool:** Vite 8
+- **Styling:** Custom CSS3 with CSS Variables (Tokyo Night Palette)
+- **Icons:** `lucide-react` + Custom inline SVGs
+- **Data Management:** Centralized JSON-like data architecture (`src/data/portfolioData.js`) separating content from UI components.
 
 ## 🚀 Run Locally
 
@@ -67,7 +76,7 @@ To spin up a local instance of this portfolio, follow these steps:
 
 ## 📫 Let's Connect
 
-Feel free to reach out for collaborations or inquiries:
+Feel free to reach out for collaborations, roles, or inquiries:
 - **LinkedIn:** [Shivansh Jaiswal](https://www.linkedin.com/in/shivansh-jaiswal-9763a233b/)
 - **Email:** jaiswalshivansh122@gmail.com
 - **GitHub:** [@Shivansh1146](https://github.com/Shivansh1146)
