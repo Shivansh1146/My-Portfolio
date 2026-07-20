@@ -1,6 +1,6 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { ScrollControls, Scroll, useScroll } from '@react-three/drei';
+import { ScrollControls, Scroll, useScroll, PerformanceMonitor } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import NeuralCore from './NeuralCore';
 import Constellation from './Constellation';
@@ -63,14 +63,17 @@ function ScrollHandler() {
 }
 
 export default function Scene() {
+  const [dpr, setDpr] = useState([1, 2]);
+
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: 1 }}>
       <Suspense fallback={<Loader />}>
         <Canvas 
           camera={{ position: [0, 0, 6], fov: 45 }}
-          dpr={[1, 2]} // Cap pixel ratio at 2 for performance on high-DPI displays
-          gl={{ antialias: false }} // Postprocessing handles AA, or we leave it off for perf
+          dpr={dpr} // Dynamically adjusted by PerformanceMonitor
+          gl={{ antialias: false, powerPreference: "high-performance" }} // Optimized WebGL context
         >
+          <PerformanceMonitor onIncline={() => setDpr([1, 2])} onDecline={() => setDpr([1, 1.5])} />
           {/* Elegant lighting setup */}
           <ambientLight intensity={0.2} />
           {/* Soft Key Light */}
