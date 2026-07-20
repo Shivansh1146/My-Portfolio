@@ -71,9 +71,9 @@ export default function ProjectGallery() {
       <instancedMesh ref={meshRef} args={[null, null, 12]}>
         <planeGeometry args={[1.5, 1]} />
         <meshStandardMaterial
-          color="#161b22"
-          emissive="#7aa2f7"
-          emissiveIntensity={0.8}
+          color="#111111"
+          emissive="#ffffff"
+          emissiveIntensity={0.5}
           transparent
           opacity={0.15}
           side={THREE.DoubleSide}

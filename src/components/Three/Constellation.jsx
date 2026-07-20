@@ -63,9 +63,9 @@ export default function Constellation() {
       <instancedMesh ref={meshRef} args={[null, null, 40]}>
         <icosahedronGeometry args={[1, 0]} />
         <meshStandardMaterial 
-          color="#0d1117"
-          emissive="#bb9af7"
-          emissiveIntensity={2}
+          color="#000000"
+          emissive="#ffffff"
+          emissiveIntensity={1.5}
           wireframe={true}
           transparent
           opacity={0.8}

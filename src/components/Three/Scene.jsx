@@ -1,6 +1,6 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { ScrollControls, Scroll } from '@react-three/drei';
+import { ScrollControls, Scroll, useScroll } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
 import NeuralCore from './NeuralCore';
 import Constellation from './Constellation';
@@ -13,6 +13,54 @@ const Loader = () => (
     Initializing Core...
   </div>
 );
+
+function ScrollHandler() {
+  const scroll = useScroll();
+
+  useEffect(() => {
+    const handleNav = (e) => {
+      const section = e.detail;
+      
+      if (!scroll.el) return;
+
+      if (section === 'top') {
+        scroll.el.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      
+      // Try to find the exact HTML element in the overlay
+      const el = document.getElementById(section);
+      if (el) {
+        // Since elements in <Scroll html> are moved by a CSS transform (-scrollTop),
+        // their true absolute Y position is their current bounding rect top + the current scrollTop.
+        // This avoids issues with position: relative offsetParents breaking offsetTop.
+        const targetY = el.getBoundingClientRect().top + scroll.el.scrollTop;
+        
+        scroll.el.scrollTo({
+          top: targetY,
+          behavior: 'smooth'
+        });
+      } else {
+        // Fallback for any missing IDs
+        let targetPage = 0;
+        if (section === 'about') targetPage = 1;
+        if (section === 'skills') targetPage = 2;
+        if (section === 'projects') targetPage = 3;
+        if (section === 'education' || section === 'contact') targetPage = 4;
+        
+        scroll.el.scrollTo({
+          top: targetPage * scroll.el.clientHeight,
+          behavior: 'smooth'
+        });
+      }
+    };
+    
+    window.addEventListener('nav-scroll', handleNav);
+    return () => window.removeEventListener('nav-scroll', handleNav);
+  }, [scroll]);
+
+  return null;
+}
 
 export default function Scene() {
   return (
@@ -28,11 +76,12 @@ export default function Scene() {
           {/* Soft Key Light */}
           <directionalLight position={[5, 5, 5]} intensity={2} color="#ffffff" />
           {/* Rim Light for depth & highlighting edges */}
-          <directionalLight position={[-5, 5, -5]} intensity={3} color="#bb9af7" />
+          <directionalLight position={[-5, 5, -5]} intensity={3} color="#a1a1a6" />
           {/* Subtle Fill Light from bottom */}
-          <pointLight position={[0, -5, 5]} intensity={1} color="#7aa2f7" />
+          <pointLight position={[0, -5, 5]} intensity={1} color="#ffffff" />
           
-          <ScrollControls pages={5} damping={0.25}>
+          <ScrollControls pages={6} damping={0.25}>
+            <ScrollHandler />
             {/* The 3D Objects */}
             <NeuralCore />
             <Constellation />

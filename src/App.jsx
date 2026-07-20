@@ -44,7 +44,7 @@ function ImmersivePortfolio() {
         In future phases, this can be stripped down even further for the 3D mode. 
       */}
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>
-        <Navbar />
+        <Navbar is3D={true} />
       </div>
       
       {/* 3D Scene Layer with Suspense boundary */}

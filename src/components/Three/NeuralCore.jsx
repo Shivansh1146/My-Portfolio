@@ -53,9 +53,9 @@ export default function NeuralCore() {
       <mesh>
         <icosahedronGeometry args={[1, 1]} />
         <meshStandardMaterial 
-          color="#0d1117" 
+          color="#000000" 
           roughness={0.9}
-          metalness={0.1}
+          metalness={0.5}
           transparent
           opacity={0.85}
           depthWrite={true}
@@ -67,8 +67,8 @@ export default function NeuralCore() {
         <icosahedronGeometry args={[1.002, 1]} />
         <meshStandardMaterial 
           color="#000000"
-          emissive="#7aa2f7"
-          emissiveIntensity={2.5}
+          emissive="#ffffff"
+          emissiveIntensity={1.5}
           wireframe={true}
           transparent
           opacity={0.7}

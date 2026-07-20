@@ -28,7 +28,7 @@ function ProjectCard({ project, index }) {
       style={{
         padding: '2.5rem',
         borderRadius: '16px',
-        border: '1px solid rgba(122,162,247,0.2)',
+        border: '1px solid rgba(255,255,255,0.2)',
         maxWidth: '600px',
         width: '100%'
       }}
@@ -47,8 +47,8 @@ function ProjectCard({ project, index }) {
         {project.tags.map(tag => (
           <span key={tag} style={{
             padding: '0.35rem 0.75rem',
-            background: 'rgba(187,154,247,0.1)',
-            border: '1px solid rgba(187,154,247,0.2)',
+            background: 'rgba(255,255,255,0.1)',
+            border: '1px solid rgba(255,255,255,0.2)',
             borderRadius: '6px',
             fontSize: '0.85rem',
             color: 'var(--text)'
@@ -85,11 +85,11 @@ export default function IntroOverlay() {
     <div className="scroll-overlay" style={{ width: '100vw' }}>
 
       {/* ===== Page 1: Cinematic Intro ===== */}
-      <section className="overlay-section cinematic" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      <section id="intro" className="overlay-section cinematic" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
           width: '80vw', height: '60vh',
-          background: 'radial-gradient(circle, rgba(13,17,23,0.7) 0%, rgba(13,17,23,0) 70%)',
+          background: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%)',
           pointerEvents: 'none', zIndex: -1
         }} />
         <motion.h2
@@ -106,11 +106,11 @@ export default function IntroOverlay() {
       </section>
 
       {/* ===== Page 2: Hero ===== */}
-      <section className="overlay-section hero-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 5rem', position: 'relative' }}>
+      <section id="about" className="overlay-section hero-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 5rem', position: 'relative' }}>
         <div style={{
           position: 'absolute', top: '50%', left: '20%', transform: 'translateY(-50%)',
           width: '80vw', height: '80vh',
-          background: 'radial-gradient(circle, rgba(13,17,23,0.85) 0%, rgba(13,17,23,0) 60%)',
+          background: 'radial-gradient(circle, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 60%)',
           pointerEvents: 'none', zIndex: -1
         }} />
         <div className="hero-content" style={{ zIndex: 10, maxWidth: '600px', textAlign: 'left' }}>
@@ -131,7 +131,7 @@ export default function IntroOverlay() {
             </p>
 
             <div className="hero-buttons" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href="#projects" className="btn btn-primary" style={{ padding: '1rem 2rem', borderRadius: '8px', fontWeight: 600 }}>
+              <a href="#projects" className="btn btn-primary" style={{ padding: '1rem 2rem', borderRadius: '8px', fontWeight: 600 }} onClick={(e) => { e.preventDefault(); window.dispatchEvent(new CustomEvent('nav-scroll', { detail: 'projects' })); }}>
                 View My Work ➔
               </a>
               <a href={socialLinks.resume} download className="btn btn-glass glass-panel" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '1rem 2rem' }}>
@@ -146,11 +146,11 @@ export default function IntroOverlay() {
       </section>
 
       {/* ===== Page 3: Constellation / Skills ===== */}
-      <section className="overlay-section skills-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5rem', position: 'relative' }}>
+      <section id="skills" className="overlay-section skills-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5rem', position: 'relative' }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
           width: '100vw', height: '80vh',
-          background: 'radial-gradient(circle, rgba(13,17,23,0.8) 0%, rgba(13,17,23,0) 70%)',
+          background: 'radial-gradient(circle, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%)',
           pointerEvents: 'none', zIndex: -1
         }} />
         <div className="skills-content" style={{ zIndex: 10, width: '100%', maxWidth: '1000px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
@@ -164,7 +164,7 @@ export default function IntroOverlay() {
             <h3 style={{ fontSize: '2.5rem', color: 'var(--primary)', marginBottom: '1.5rem', fontWeight: 600 }}>Backend & Architecture</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
               {backendSkills.map(name => (
-                <span key={name} className="skill-tag glass-panel" style={{ padding: '0.5rem 1rem', fontSize: '1rem', border: '1px solid rgba(122,162,247,0.3)' }}>
+                <span key={name} className="skill-tag glass-panel" style={{ padding: '0.5rem 1rem', fontSize: '1rem', border: '1px solid rgba(255,255,255,0.3)' }}>
                   {name}
                 </span>
               ))}
@@ -180,7 +180,7 @@ export default function IntroOverlay() {
             <h3 style={{ fontSize: '2.5rem', color: 'var(--accent)', marginBottom: '1.5rem', fontWeight: 600 }}>AI & Frontend Tools</h3>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', justifyContent: 'flex-end' }}>
               {aiSkills.map(name => (
-                <span key={name} className="skill-tag glass-panel" style={{ padding: '0.5rem 1rem', fontSize: '1rem', border: '1px solid rgba(187,154,247,0.3)' }}>
+                <span key={name} className="skill-tag glass-panel" style={{ padding: '0.5rem 1rem', fontSize: '1rem', border: '1px solid rgba(255,255,255,0.3)' }}>
                   {name}
                 </span>
               ))}
@@ -198,7 +198,7 @@ export default function IntroOverlay() {
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
           width: '100vw', height: '100vh',
-          background: 'radial-gradient(circle, rgba(13,17,23,0.85) 0%, rgba(13,17,23,0) 65%)',
+          background: 'radial-gradient(circle, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 65%)',
           pointerEvents: 'none', zIndex: -1
         }} />
 
@@ -230,12 +230,13 @@ export default function IntroOverlay() {
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
           width: '100vw', height: '100vh',
-          background: 'radial-gradient(circle, rgba(13,17,23,0.9) 0%, rgba(13,17,23,0) 60%)',
+          background: 'radial-gradient(circle, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%)',
           pointerEvents: 'none', zIndex: -1
         }} />
 
         {/* Education */}
         <motion.div
+          id="education"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -247,7 +248,7 @@ export default function IntroOverlay() {
           </h2>
 
           {educationData.map(edu => (
-            <div key={edu.id} className="glass-panel" style={{ padding: '1.5rem 2rem', borderRadius: '12px', marginBottom: '1rem', textAlign: 'left', border: '1px solid rgba(122,162,247,0.15)' }}>
+            <div key={edu.id} className="glass-panel" style={{ padding: '1.5rem 2rem', borderRadius: '12px', marginBottom: '1rem', textAlign: 'left', border: '1px solid rgba(255,255,255,0.15)' }}>
               <h4 style={{ fontSize: '1.3rem', color: 'var(--primary)', marginBottom: '0.3rem' }}>{edu.title}</h4>
               <p style={{ color: 'var(--text-muted)', marginBottom: '0.5rem' }}>{edu.subtitle}</p>
               <p style={{ color: 'var(--accent)', fontSize: '0.9rem' }}>{edu.duration}</p>
@@ -262,6 +263,7 @@ export default function IntroOverlay() {
 
         {/* Contact */}
         <motion.div
+          id="contact"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -289,7 +291,7 @@ export default function IntroOverlay() {
               <FileText size={20} /> Download Resume
             </a>
           </div>
-          <p style={{ marginTop: '3rem', color: 'rgba(192,202,245,0.4)', fontSize: '0.85rem' }}>
+          <p style={{ marginTop: '3rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>
             © {new Date().getFullYear()} Shivansh Jaiswal. Engineered with React & Vite.
           </p>
         </motion.div>
