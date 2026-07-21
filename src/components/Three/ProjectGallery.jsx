@@ -38,12 +38,12 @@ export default function ProjectGallery() {
 
     const offset = scroll.offset;
 
-    // pages=6: Projects section = offset 0.5 to 0.75
-    // Gallery visible from 0.5 to 0.75, completely gone at 0.75
+    // pages=5: Projects section = offset 0.6 to 0.86
+    // Gallery visible 0.6 to 0.86, completely gone at 0.86 (Education start)
     let visibility = 0;
-    if (offset > 0.5 && offset < 0.75) {
-      if (offset < 0.56) visibility = (offset - 0.5) / 0.06;
-      else if (offset > 0.69) visibility = 1 - (offset - 0.69) / 0.06;
+    if (offset > 0.6 && offset < 0.86) {
+      if (offset < 0.66) visibility = (offset - 0.6) / 0.06;
+      else if (offset > 0.8) visibility = 1 - (offset - 0.8) / 0.06;
       else visibility = 1;
     }
     visibility = Math.max(0, Math.min(1, visibility));

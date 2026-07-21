@@ -192,7 +192,7 @@ export default function IntroOverlay() {
 
       {/* ===== Page 4: Project Gallery ===== */}
       <section id="projects" className="overlay-section projects-section" style={{
-        minHeight: '150vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        minHeight: '130vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
         justifyContent: 'flex-start', padding: '8vh 2rem 6vh', position: 'relative', gap: '3rem'
       }}>
         <div style={{
@@ -224,7 +224,7 @@ export default function IntroOverlay() {
 
       {/* ===== Page 5 & 6: Education + Contact / Landing ===== */}
       <section className="overlay-section landing-section" style={{
-        minHeight: '150vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        display: 'flex', flexDirection: 'column', alignItems: 'center',
         justifyContent: 'flex-start', padding: '8vh 2rem 6vh', position: 'relative', gap: '4rem'
       }}>
         <div style={{

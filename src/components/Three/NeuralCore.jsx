@@ -18,24 +18,22 @@ export default function NeuralCore() {
     const offset = scroll.offset; // 0 to 1
     
     // Smoothly transition scale and position based on scroll offset
-    // 0.0 to 0.166 = Intro to Hero (scales up, moves right)
-    // 0.166 to 0.333 = Hero to Skills (scales down to 0, moves left)
-    
+    // pages=5: 0.0 to 0.2 = Intro to Hero, 0.2 to 0.4 = Hero to Skills
     let targetScale = 1;
     let targetX = 0;
     let targetY = 0;
     
-    if (offset < 0.166) {
+    if (offset < 0.2) {
       // Intro -> Hero
-      const localOffset = offset * 6; // 0 to 1 over first 1/6th
+      const localOffset = offset * 5; // 0 to 1 over first page
       targetScale = 1 + localOffset * 0.8;
       targetX = localOffset * 2.5;
       targetY = -localOffset * 1.5;
     } else {
-      // Hero -> Skills
-      const localOffset = (offset - 0.166) * 6; // 0 to 1 over next 1/6th
-      targetScale = Math.max(0, 1.8 - localOffset * 2.5); // Shrinks rapidly
-      targetX = 2.5 - localOffset * 4; // Moves left and away
+      // Hero -> Skills (shrink to 0)
+      const localOffset = (offset - 0.2) * 5; // 0 to 1 over second page
+      targetScale = Math.max(0, 1.8 - localOffset * 2.5);
+      targetX = 2.5 - localOffset * 4;
       targetY = -1.5 - localOffset * 2;
     }
     
