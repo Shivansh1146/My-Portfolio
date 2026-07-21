@@ -83,7 +83,7 @@ export default function Scene() {
           {/* Subtle Fill Light from bottom */}
           <pointLight position={[0, -5, 5]} intensity={1} color="#ffffff" />
           
-          <ScrollControls pages={7} damping={0.25}>
+          <ScrollControls pages={6} damping={0.25}>
             <ScrollHandler />
             {/* The 3D Objects */}
             <NeuralCore />
