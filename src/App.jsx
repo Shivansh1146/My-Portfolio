@@ -40,12 +40,9 @@ function ImmersivePortfolio() {
     <>
       {/* 
         Persistent Minimal Nav
-        We reuse Navbar, but we'll ensure it stays fixed at the top with a high z-index.
-        In future phases, this can be stripped down even further for the 3D mode. 
+        We reuse Navbar, which handles its own fixed positioning.
       */}
-      <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>
-        <Navbar is3D={true} />
-      </div>
+      <Navbar is3D={true} />
       
       {/* 3D Scene Layer with Suspense boundary */}
       <React.Suspense fallback={null}>

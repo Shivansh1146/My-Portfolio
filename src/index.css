@@ -64,7 +64,7 @@ a {
   transform: translateX(-50%);
   width: 90%;
   max-width: 1000px;
-  z-index: 50;
+  z-index: 99999;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
