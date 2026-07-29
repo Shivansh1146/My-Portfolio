@@ -38,11 +38,11 @@ export default function ProjectGallery() {
 
     const offset = scroll.offset;
 
-    // Gallery visible from offset 0.6 to 1.0
+    // Gallery visible from offset 0.5 to 0.9
     let visibility = 0;
-    if (offset > 0.6) {
-      if (offset < 0.75) visibility = (offset - 0.6) / 0.15;
-      else if (offset > 0.85) visibility = 1 - (offset - 0.85) / 0.15;
+    if (offset > 0.5 && offset < 0.9) {
+      if (offset < 0.6) visibility = (offset - 0.5) / 0.1;
+      else if (offset > 0.85) visibility = 1 - (offset - 0.85) / 0.05;
       else visibility = 1;
     }
     visibility = Math.max(0, Math.min(1, visibility));
