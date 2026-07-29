@@ -225,7 +225,7 @@ export default function IntroOverlay() {
       {/* ===== Page 5: Education + Contact / Landing ===== */}
       <section className="overlay-section landing-section" style={{
         minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'center', padding: '5vh 2rem', position: 'relative', gap: '2rem'
+        justifyContent: 'center', padding: '5vh 2rem 2rem', position: 'relative', gap: '2rem'
       }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
