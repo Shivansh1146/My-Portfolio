@@ -29,12 +29,11 @@ export default function Constellation() {
     // Page 3 (Skills) is around offset 0.4 to 0.6.
     const offset = scroll.offset;
     
-    // pages=5: Skills section = offset 0.4 to 0.6
-    // Visibility: fade in 0.37-0.43, solid, fade out 0.55-0.6
+    // Visibility: fade in from 0.2 to 0.35, stay solid, fade out from 0.5 to 0.6
     let visibility = 0;
-    if (offset > 0.37 && offset < 0.6) {
-      if (offset < 0.43) visibility = (offset - 0.37) / 0.06;
-      else if (offset > 0.55) visibility = 1 - (offset - 0.55) / 0.05;
+    if (offset > 0.2 && offset < 0.6) {
+      if (offset < 0.35) visibility = (offset - 0.2) / 0.15; 
+      else if (offset > 0.5) visibility = 1 - (offset - 0.5) / 0.1;
       else visibility = 1;
     }
     visibility = Math.max(0, Math.min(1, visibility));

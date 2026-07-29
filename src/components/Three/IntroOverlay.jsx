@@ -192,8 +192,8 @@ export default function IntroOverlay() {
 
       {/* ===== Page 4: Project Gallery ===== */}
       <section id="projects" className="overlay-section projects-section" style={{
-        minHeight: '130vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'flex-start', padding: '8vh 2rem 6vh', position: 'relative', gap: '3rem'
+        minHeight: '150vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'flex-start', paddingTop: '15vh', paddingBottom: '10vh', paddingLeft: '2rem', paddingRight: '2rem', position: 'relative', gap: '3rem'
       }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
@@ -224,8 +224,8 @@ export default function IntroOverlay() {
 
       {/* ===== Page 5 & 6: Education + Contact / Landing ===== */}
       <section className="overlay-section landing-section" style={{
-        display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'flex-start', padding: '8vh 2rem 6vh', position: 'relative', gap: '4rem'
+        minHeight: '150vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'flex-start', paddingTop: '10vh', paddingBottom: '10vh', paddingLeft: '2rem', paddingRight: '2rem', position: 'relative', gap: '4rem'
       }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
