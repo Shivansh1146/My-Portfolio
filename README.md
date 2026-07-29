@@ -42,6 +42,8 @@ The portfolio showcases my expertise in **Backend Engineering** and **Artificial
 - **Pixel-Perfect Layout:** Strict `height`-based section sizing ensures the total HTML scroll height exactly matches `ScrollControls pages={6}` (600vh), eliminating dead zones and content bleeding.
 - **Fixed Navbar Z-Index:** The glassmorphic Navbar uses `z-index: 99999` and avoids nested stacking contexts, guaranteeing it renders above all 3D canvas and DOM overlay content at all times.
 - **Framer Motion Animations:** Physics-based UI reveals (`whileInView`) overlaid on the 3D canvas with per-section entrance animations.
+- **Hero CTA Scroll-Fade:** Hero buttons (View My Work / Resume / GitHub) are bound to `viewport={{ amount: 0.4 }}` and `overflow: hidden` per section, ensuring they fully disappear when scrolling into Skills.
+- **NeuralCore Thematic Return:** The NeuralCore re-assembles in deep background (Z=−12) behind the Contact section, providing a cinematic bookend without obstructing any text or buttons.
 
 ---
 
@@ -64,12 +66,12 @@ The entire experience is driven by `<ScrollControls pages={6}>`, mapping `scroll
 
 | Offset Range | Section | 3D Asset Active |
 |---|---|---|
-| `0.0 – 0.2` | Intro → Hero | NeuralCore (grows) |
-| `0.2 – 0.4` | Hero → Skills | NeuralCore (shrinks out) |
-| `0.2 – 0.6` | Skills | Constellation (peaks at 0.35–0.5) |
-| `0.5 – 0.9` | Projects | ProjectGallery planes |
-| `0.6 – 0.9` | Education | All 3D faded out |
-| `0.9 – 1.0` | Contact | Clean void |
+| `0.0 – 0.2` | Intro → Hero | NeuralCore (grows, moves right) |
+| `0.2 – 0.45` | Hero → Skills | NeuralCore (shrinks out) |
+| `0.2 – 0.58` | Skills | Constellation (22 edge-biased nodes, peaks 0.32–0.48) |
+| `0.48 – 0.85` | Projects | ProjectGallery (8 deep-background planes at Z=−12) |
+| `0.6 – 0.85` | Education | All foreground 3D faded out |
+| `0.70 – 1.0` | Contact | NeuralCore re-assembles at Z=−12, Y=−1.4, scale=0.55 |
 
 ---
 
@@ -81,9 +83,9 @@ src/
 │   ├── Three/
 │   │   ├── Scene.jsx          # R3F Canvas + ScrollControls root (pages=6)
 │   │   ├── IntroOverlay.jsx   # All HTML DOM sections (strict 6×100vh layout)
-│   │   ├── NeuralCore.jsx     # Icosahedron mesh, scroll-driven scale/position
-│   │   ├── Constellation.jsx  # Instanced skill particles, fade 0.2–0.6
-│   │   ├── ProjectGallery.jsx # Floating glass project planes, fade 0.5–0.9
+│   │   ├── NeuralCore.jsx     # Icosahedron mesh, scroll-driven scale/position/Z
+│   │   ├── Constellation.jsx  # 22 instanced edge-biased skill particles, fade 0.2–0.58
+│   │   ├── ProjectGallery.jsx # 8 deep-background glass planes at Z=−12, fade 0.48–0.85
 │   │   └── ScrollHandler.jsx  # Nav-link → scroll offset bridge
 │   ├── Navbar.jsx             # Fixed pill navbar, z-index: 99999
 │   ├── Hero.jsx               # 2D fallback hero section
@@ -130,7 +132,11 @@ npm run dev
 | Navbar hidden behind 3D content | Nested `position:fixed` wrapper in `App.jsx` created a stacking context capping z-index at 100 | Removed wrapper; set `.navbar { z-index: 99999 }` |
 | "Education" text bleeding into project cards | Sections using `100vh` with `justify-content:center` allowed overflow on mid-size screens | Changed to `height: 150vh` + `justify-content: flex-start` + explicit top padding |
 | Constellation & Gallery visible in Contact section | Fade thresholds were calibrated for `pages={5}`, not `pages={6}` | Recalibrated all 3D offset math to match 6-page layout |
-| Excess whitespace below copyright | Landing section had fixed `150vh` with `justify-content:center`, leaving empty void at bottom | Used `marginTop: auto` on Contact block to anchor it to the floor |
+| Excess whitespace below copyright | Landing section had fixed `150vh` with `justify-content:center`, leaving empty void at bottom | Used `marginTop: 3rem` on Contact block and tightened section to `120vh` |
+| Constellation nodes cluttering center text | 40 nodes spawned with wide random X range (±6) and inconsistent scale (0.05–0.20) | Reduced to 22 nodes, biased spawn to `|X| > 3.5` edges, normalized scale `0.07–0.10` |
+| ProjectGallery planes overlapping card text | Group positioned at Z=−5, planes floating at random positive Z, rendering through DOM cards | Pushed group to Z=−12, all planes at Z=−14 to −20, added `depthWrite={false}` |
+| Hero CTA buttons visible during Skills scroll | `whileInView` had no `amount` threshold so buttons persisted past section boundary | Added `viewport={{ amount: 0.4 }}` + `overflow: hidden` to Hero & Skills sections |
+| NeuralCore re-assembly overlapping Contact text | Contact-phase NeuralCore at scale=1.35 rendered directly over DOM text at near-Z | Pushed to Z=−12, Y=−1.4, scale=0.55 for clear separation from all foreground text |
 
 ---
 
