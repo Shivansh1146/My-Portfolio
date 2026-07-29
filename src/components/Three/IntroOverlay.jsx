@@ -224,8 +224,8 @@ export default function IntroOverlay() {
 
       {/* ===== Page 5: Education + Contact / Landing ===== */}
       <section className="overlay-section landing-section" style={{
-        height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'space-between', padding: '10vh 2rem', position: 'relative', gap: '4rem'
+        minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'center', padding: '5vh 2rem', position: 'relative', gap: '2rem'
       }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
@@ -268,7 +268,7 @@ export default function IntroOverlay() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: false }}
-          style={{ zIndex: 10, textAlign: 'center', marginTop: 'auto' }}
+          style={{ zIndex: 10, textAlign: 'center' }}
         >
           <p style={{ fontSize: '1.3rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
             Let's build something together.
@@ -291,7 +291,7 @@ export default function IntroOverlay() {
               <FileText size={20} /> Download Resume
             </a>
           </div>
-          <p style={{ marginTop: '3rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>
+          <p style={{ marginTop: '1.5rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>
             © {new Date().getFullYear()} Shivansh Jaiswal. Engineered with React & Vite.
           </p>
         </motion.div>
