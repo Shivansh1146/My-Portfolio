@@ -17,13 +17,10 @@ export default function NeuralCore() {
     // Scroll-based transformations
     const offset = scroll.offset; // 0 to 1
     
-    // Smoothly transition scale and position based on scroll offset
-    // 0.0 to 0.2 = Intro to Hero (scales up, moves right)
-    // 0.2 to 0.4 = Hero to Skills (scales down to 0, moves left)
-    
     let targetScale = 1;
     let targetX = 0;
     let targetY = 0;
+    let targetZ = -2; // Default Z position
     
     if (offset < 0.2) {
       // Intro -> Hero (scales up, moves right)
@@ -31,28 +28,30 @@ export default function NeuralCore() {
       targetScale = 1 + localOffset * 0.8;
       targetX = localOffset * 2.5;
       targetY = -localOffset * 1.5;
+      targetZ = -2;
     } else if (offset < 0.45) {
       // Hero -> Skills (shrinks out)
       const localOffset = (offset - 0.2) * 4;
       targetScale = Math.max(0, 1.8 - localOffset * 2.5);
       targetX = 2.5 - localOffset * 4;
       targetY = -1.5 - localOffset * 2;
-    } else if (offset >= 0.72) {
-      // Re-assemble / Return during Contact & Footer section (Phase 4 thematic closure)
-      const localOffset = Math.min(1, (offset - 0.72) / 0.25);
-      targetScale = localOffset * 1.35;
+      targetZ = -2;
+    } else if (offset >= 0.70) {
+      // Re-assemble deeply in background behind Contact section (Phase 4 thematic closure)
+      const localOffset = Math.min(1, (offset - 0.70) / 0.25);
+      targetScale = localOffset * 0.75; // Subtle scale
       targetX = 0;
-      targetY = -0.3;
+      targetY = -0.7; // Positioned lower behind contact buttons
+      targetZ = -8;   // Pushed deep into background (-8 Z) to eliminate text collision
     } else {
       targetScale = 0;
+      targetZ = -2;
     }
     
     groupRef.current.scale.setScalar(targetScale);
     groupRef.current.position.x = targetX;
-    groupRef.current.position.y = targetY;
-    
-    // Gentle floating effect
-    groupRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.2) * 0.08;
+    groupRef.current.position.y = targetY + Math.sin(state.clock.elapsedTime * 1.2) * 0.05;
+    groupRef.current.position.z = targetZ;
   });
 
   return (
@@ -65,8 +64,8 @@ export default function NeuralCore() {
           roughness={0.9}
           metalness={0.5}
           transparent
-          opacity={0.85}
-          depthWrite={true}
+          opacity={0.6}
+          depthWrite={false}
         />
       </mesh>
       
@@ -76,12 +75,14 @@ export default function NeuralCore() {
         <meshStandardMaterial 
           color="#000000"
           emissive="#ffffff"
-          emissiveIntensity={1.5}
+          emissiveIntensity={1.0}
           wireframe={true}
           transparent
-          opacity={0.7}
+          opacity={0.45}
+          depthWrite={false}
         />
       </mesh>
     </group>
   );
 }
+

@@ -106,7 +106,7 @@ export default function IntroOverlay() {
       </section>
 
       {/* ===== Page 2: Hero ===== */}
-      <section id="about" className="overlay-section hero-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 5rem', position: 'relative' }}>
+      <section id="about" className="overlay-section hero-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 5rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', top: '50%', left: '20%', transform: 'translateY(-50%)',
           width: '80vw', height: '80vh',
@@ -118,7 +118,7 @@ export default function IntroOverlay() {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: false }}
+            viewport={{ once: false, amount: 0.4 }}
           >
             <p className="hero-subtitle" style={{ color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
               Backend Engineer & AI Developer
@@ -146,7 +146,7 @@ export default function IntroOverlay() {
       </section>
 
       {/* ===== Page 3: Constellation / Skills ===== */}
-      <section id="skills" className="overlay-section skills-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5rem', position: 'relative' }}>
+      <section id="skills" className="overlay-section skills-section" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '0 5rem', position: 'relative', overflow: 'hidden' }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
           width: '100vw', height: '80vh',
