@@ -224,8 +224,8 @@ export default function IntroOverlay() {
 
       {/* ===== Page 5 & 6: Education + Contact / Landing ===== */}
       <section className="overlay-section landing-section" style={{
-        height: '150vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
-        justifyContent: 'flex-start', paddingTop: '10vh', paddingBottom: '5vh', paddingLeft: '2rem', paddingRight: '2rem', position: 'relative', gap: '4rem'
+        height: '120vh', display: 'flex', flexDirection: 'column', alignItems: 'center',
+        justifyContent: 'flex-start', paddingTop: '8vh', paddingBottom: '5vh', paddingLeft: '2rem', paddingRight: '2rem', position: 'relative', gap: '2.5rem'
       }}>
         <div style={{
           position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)',
@@ -266,9 +266,9 @@ export default function IntroOverlay() {
           id="contact"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: false }}
-          style={{ zIndex: 10, textAlign: 'center', marginTop: 'auto' }}
+          style={{ zIndex: 10, textAlign: 'center', marginTop: '3rem' }}
         >
           <p style={{ fontSize: '1.3rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
             Let's build something together.

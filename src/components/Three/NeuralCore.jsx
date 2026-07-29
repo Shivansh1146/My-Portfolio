@@ -26,25 +26,33 @@ export default function NeuralCore() {
     let targetY = 0;
     
     if (offset < 0.2) {
-      // Intro -> Hero
-      const localOffset = offset * 5; // 0 to 1 over first 1/5th
+      // Intro -> Hero (scales up, moves right)
+      const localOffset = offset * 5;
       targetScale = 1 + localOffset * 0.8;
       targetX = localOffset * 2.5;
       targetY = -localOffset * 1.5;
-    } else {
-      // Hero -> Skills
-      const localOffset = (offset - 0.2) * 5; // 0 to 1 over next 1/5th
-      targetScale = Math.max(0, 1.8 - localOffset * 2.5); // Shrinks rapidly
-      targetX = 2.5 - localOffset * 4; // Moves left and away
+    } else if (offset < 0.45) {
+      // Hero -> Skills (shrinks out)
+      const localOffset = (offset - 0.2) * 4;
+      targetScale = Math.max(0, 1.8 - localOffset * 2.5);
+      targetX = 2.5 - localOffset * 4;
       targetY = -1.5 - localOffset * 2;
+    } else if (offset >= 0.72) {
+      // Re-assemble / Return during Contact & Footer section (Phase 4 thematic closure)
+      const localOffset = Math.min(1, (offset - 0.72) / 0.25);
+      targetScale = localOffset * 1.35;
+      targetX = 0;
+      targetY = -0.3;
+    } else {
+      targetScale = 0;
     }
     
     groupRef.current.scale.setScalar(targetScale);
     groupRef.current.position.x = targetX;
     groupRef.current.position.y = targetY;
     
-    // Floating effect
-    groupRef.current.position.y += Math.sin(state.clock.elapsedTime) * 0.05;
+    // Gentle floating effect
+    groupRef.current.position.y += Math.sin(state.clock.elapsedTime * 1.2) * 0.08;
   });
 
   return (
