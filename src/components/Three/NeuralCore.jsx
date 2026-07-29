@@ -39,10 +39,10 @@ export default function NeuralCore() {
     } else if (offset >= 0.70) {
       // Re-assemble deeply in background behind Contact section (Phase 4 thematic closure)
       const localOffset = Math.min(1, (offset - 0.70) / 0.25);
-      targetScale = localOffset * 0.75; // Subtle scale
+      targetScale = localOffset * 0.55; // Compact, subtle scale
       targetX = 0;
-      targetY = -0.7; // Positioned lower behind contact buttons
-      targetZ = -8;   // Pushed deep into background (-8 Z) to eliminate text collision
+      targetY = -1.4; // Positioned lower beneath contact buttons
+      targetZ = -12;  // Pushed deep into background (-12 Z) for zero text collision
     } else {
       targetScale = 0;
       targetZ = -2;
